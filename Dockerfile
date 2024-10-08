@@ -24,7 +24,9 @@ COPY . /var/www/symfony
 WORKDIR /var/www/symfony
 
 # Устанавливаем права на запись в директорию var
-RUN chown -R www-data:www-data /var/www/symfony/var
+RUN ls -la /var/www/symfony && \
+    mkdir -p /var/www/symfony/var && \
+    chown -R www-data:www-data /var/www/symfony/var
 
 # Сначала обновить зависимости Symfony
 RUN composer update
